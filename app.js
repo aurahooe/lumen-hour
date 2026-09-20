@@ -24,10 +24,11 @@ const EDITORIALS = [
 function hourSlot(d = new Date()) {
   const t = new Date(d);
   t.setMinutes(0, 0, 0);
+  t.setSeconds(0, 0);
   return t.toISOString();
 }
 
-pad = (n) => String(n).padStart(2, "0");
+const pad = (n) => String(n).padStart(2, "0");
 
 function tick() {
   const now = new Date();
@@ -35,11 +36,11 @@ function tick() {
     pad(now.getHours()) + ":" + pad(now.getMinutes()) + ":" + pad(now.getSeconds());
   const next = new Date(now);
   next.setHours(now.getHours() + 1, 0, 0, 0);
-  const left = next - now;
+  const left = Math.max(0, next - now);
   const m = Math.floor(left / 60000);
   const s = Math.floor((left % 60000) / 1000);
   $("clock-left").textContent = m + "m " + pad(s) + "s until the next hour";
-  $("slot-label").textContent = "Slot " + hourSlot().replace(".000Z", "Z");
+  $("slot-label").textContent = "Current hour slot " + hourSlot();
 }
 
 function show(view) {
