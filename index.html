@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lumen Hour — one note, every hour</title>
+  <meta name="description" content="An independent magazine that features one public note every hour." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="curtain" id="curtain"><span>Lumen Hour</span></div>
+
+  <header class="top">
+    <a class="mark" href="#home" data-nav="home">
+      <span class="mark-orb"></span>
+      Lumen Hour
+    </a>
+    <nav class="nav">
+      <button data-nav="home">The Hour</button>
+      <button data-nav="wall">Public wall</button>
+      <button data-nav="desk" class="needs-auth hidden">Desk</button>
+    </nav>
+    <div class="top-right">
+      <div class="clock" id="clock">
+        <span id="clock-time">00:00:00</span>
+        <em id="clock-left">until next hour</em>
+      </div>
+      <button class="ghost" id="auth-open">Sign in</button>
+      <button class="ghost hidden" id="sign-out">Sign out</button>
+    </div>
+  </header>
+
+  <main>
+    <section id="view-home" class="view">
+      <p class="kicker reveal">Issue of the hour</p>
+      <h1 class="display reveal" id="hour-headline">The room is still assembling.</h1>
+      <p class="lede reveal" id="hour-editorial">Every hour this magazine picks one public note and sets it on the table. Write something worth leaving the lights on for.</p>
+      <article class="feature reveal" id="feature">
+        <p class="muted">No public notes yet. Sign in and publish the first one.</p>
+      </article>
+    </section>
+
+    <section id="view-wall" class="view hidden">
+      <div class="section-head">
+        <h2>Public wall</h2>
+        <p>Anything marked public lives here. Private notes stay at your desk.</p>
+      </div>
+      <div class="grid" id="wall"></div>
+    </section>
+
+    <section id="view-desk" class="view hidden">
+      <div class="section-head">
+        <h2>Your desk</h2>
+        <p id="who"></p>
+      </div>
+      <form id="note-form" class="composer">
+        <input name="title" maxlength="120" required placeholder="A title that can stand alone" />
+        <textarea name="body" required maxlength="8000" rows="8" placeholder="Write the piece. Short is fine. Honest is better."></textarea>
+        <label class="check">
+          <input type="checkbox" name="is_public" />
+          Mark public — it can appear on the wall and be featured this hour
+        </label>
+        <button type="submit" class="solid">Save note</button>
+      </form>
+      <div class="grid" id="mine"></div>
+    </section>
+  </main>
+
+  <aside class="sheet hidden" id="auth-sheet">
+    <div class="sheet-card">
+      <button class="close" id="auth-close" aria-label="Close">×</button>
+      <h3 id="auth-title">Welcome back</h3>
+      <p class="muted">Accounts are stored in Supabase. Passwords never sit in this page.</p>
+      <form id="auth-form">
+        <input type="email" name="email" required placeholder="you@studio.mail" autocomplete="email" />
+        <input type="password" name="password" required minlength="8" placeholder="password, eight characters at least" autocomplete="current-password" />
+        <input type="text" name="handle" id="handle-field" class="hidden" placeholder="handle — no spaces" maxlength="24" />
+        <button type="submit" class="solid" id="auth-submit">Sign in</button>
+      </form>
+      <button class="text-btn" id="auth-toggle">Need an account?</button>
+      <p class="err" id="auth-err"></p>
+    </div>
+  </aside>
+
+  <footer>
+    <span>Printed in the browser.</span>
+    <span id="slot-label"></span>
+  </footer>
+
+  <script src="./app.js"></script>
+</body>
+</html>
