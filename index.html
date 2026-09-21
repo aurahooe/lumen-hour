@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Lumen Hour — one note, every hour</title>
-  <meta name="description" content="An independent magazine that features one public note every hour." />
+  <title>Lumen Hour</title>
+  <meta name="description" content="A small magazine that seats one public note every hour. Private drafts stay at your desk." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -40,6 +40,7 @@
       <p class="kicker reveal">Issue of the hour</p>
       <h1 class="display reveal" id="hour-headline">The room is still assembling.</h1>
       <p class="lede reveal" id="hour-editorial">Every hour this magazine picks one public note and sets it on the table. Write something worth leaving the lights on for.</p>
+      <div class="progress reveal" aria-hidden="true"><i id="hour-bar"></i></div>
       <article class="feature reveal" id="feature">
         <p class="muted">No public notes yet. Sign in and publish the first one.</p>
       </article>
@@ -75,11 +76,11 @@
     <div class="sheet-card">
       <button class="close" id="auth-close" aria-label="Close">×</button>
       <h3 id="auth-title">Welcome back</h3>
-      <p class="muted">Accounts are stored in Supabase. Passwords never sit in this page.</p>
+      <p class="muted">Accounts live in Supabase Auth. This page never stores your password.</p>
       <form id="auth-form">
         <input type="email" name="email" required placeholder="you@studio.mail" autocomplete="email" />
         <input type="password" name="password" required minlength="8" placeholder="password, eight characters at least" autocomplete="current-password" />
-        <input type="text" name="handle" id="handle-field" class="hidden" placeholder="handle — no spaces" maxlength="24" />
+        <input type="text" name="handle" id="handle-field" class="hidden" placeholder="handle — letters and numbers" maxlength="24" />
         <button type="submit" class="solid" id="auth-submit">Sign in</button>
       </form>
       <button class="text-btn" id="auth-toggle">Need an account?</button>
