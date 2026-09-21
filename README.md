@@ -1,7 +1,10 @@
 # Lumen Hour
 
-An independent magazine that features one public note every hour.
+A small magazine with one chair. Every hour a public note sits down.
 
-Open `index.html` locally, or deploy the folder to Vercel / Netlify / GitHub Pages.
+- Sign up / sign in via Supabase Auth
+- Notes persist in Postgres
+- Public notes appear on the wall and can be the hour
+- Private notes stay at your desk
 
-Auth and storage run on the connected Supabase project. Public notes appear on the wall; private notes stay in your desk.
+Live: after Vercel deploy, `lumen-hour-ra-1f23.vercel.app`
