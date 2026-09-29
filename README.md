@@ -1,10 +1,9 @@
 # Lumen Hour
 
-A small magazine with one chair. Every hour a public note sits down.
+Live at [lumen-hour.vercel.app](https://lumen-hour.vercel.app).
 
-- Sign up / sign in via Supabase Auth
-- Notes persist in Postgres
-- Public notes appear on the wall and can be the hour
-- Private notes stay at your desk
+A small magazine with a clock on it. Every hour the front page turns. Sign in, keep private notes at your desk, or mark a piece public and it walks onto the wall.
 
-Live: after Vercel deploy, `lumen-hour-ra-1f23.vercel.app`
+- Auth and storage: Supabase
+- Public notes are readable by anyone
+- Private notes stay with the account that wrote them
